@@ -1,8 +1,119 @@
-<form action="/todos" method="POST" style="display: inline;">
-  <div class="input-group">
-    <input class="form-control" type="text" placeholder="name" name="name">
-    <div class="input-group-append">
-      <button class="btn btn-success" type="submit">Create</button>
+<!-- search bar -->
+<div class="container search-bar" >
+    <div class="search-bar-outer">
+        <div class="search-bar-inner" >
+
+            <form action="/restaurants" method="POST">
+                <h4 class="mb-3">新增餐廳：</h4>
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="restaurantName" class="col-form-label">餐廳名稱</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="restaurantName" class="form-control" name="name" placeholder="餐廳大名" required>
+                    </div>
+                    <span>＊</span>
+                </div>
+
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="restaurantEngName" class="col-form-label">英文名稱</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="restaurantEngName" class="form-control" name="name_en" placeholder="English only here.">
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="restaurantCategory" class="col-form-label">餐廳類型</label>
+                    </div>
+                    <div class="col-auto">
+                        <select id="restaurantCategory" class="form-control" name="category">
+                            <option value="">請選擇</option>
+                            <option value="美式">美式</option>
+                            <option value="道地台式">道地台式</option>
+                            <option value="日本料理">日本料理</option>
+                            <option value="義式餐廳">義式餐廳</option>
+                            <option value="咖啡">咖啡</option>
+                            <option value="中東料理">中東料理</option>
+                            <option value="酒吧">酒吧</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="restaurantLocation" class="col-form-label">餐廳地址</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="restaurantLocation" class="form-control" name="location" placeholder="地址的部分" required>
+                    </div>
+                    <span>＊</span>
+                </div>
+
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="restaurantGoogleMap" class="col-form-label">Google Map</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="restaurantGoogleMap" class="form-control" name="google_map" placeholder="分享座標的網址給我們吧">
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="restaurantPhone" class="col-form-label">電話號碼</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="restaurantPhone" class="form-control" name="phone" placeholder="記得加上區碼喔" required>
+                    </div>
+                    <span>＊</span>
+                </div>
+
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="rating" class="col-form-label">推薦評分</label>
+                    </div>
+                    <div class="col-auto">
+                        <select id="rating" class="form-control" name="rating" required>
+                        </select>
+                    </div>
+                    <span>＊</span>
+                </div>
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="restaurantDescription" class="col-form-label">詳細內容</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="restaurantDescription" class="form-control" name="description" placeholder="寫點關於這間餐廳的描述吧">
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="restaurantImage" class="col-form-label">照片網址</label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" id="restaurantImage" class="form-control" name="image" placeholder="請將喜歡的照片的網址貼在此欄">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 m-auto" style="display: inline">
+                        <button type="submit" class="btn btn-info btn-lg mr-3">新增</button>
+                        <a href="/"><button type="button" class="btn btn-secondary btn-lg">返回</button></a>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
-</form>
+</div>
+
+<script>
+    let a =document.querySelector("#rating")
+    let option = '<option value="">請給分</option>'
+    for(let i=50;i>=10;i=i-1){
+        const score = i/10
+        option += '<option value="'+ score +'"> ' + score + '</option>'
+    }
+    a.innerHTML = option
+</script>

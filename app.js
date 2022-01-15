@@ -1,6 +1,7 @@
 const express = require('express')
 const session = require('express-session')
 const exphbs = require('express-handlebars')
+
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
@@ -39,6 +40,8 @@ app.use((req, res, next) => {
     res.locals.warning_msg = req.flash('warning_msg')
     next()
 })
+// use the static document including stylesheet
+app.use(express.static('public'))
 
 app.use(routes)
 
