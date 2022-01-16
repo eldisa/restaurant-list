@@ -7,7 +7,9 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node models/seeds/restaurantSeeder.js"
+    "seed": "npm run generate-user & npm run generate-restaurant",
+    "generate-user": "node ./models/seeds/userSeeder.js",
+    "generate-restaurant": "node ./models/seeds/restaurantSeeder.js"
   },
   "keywords": [],
   "author": "",
