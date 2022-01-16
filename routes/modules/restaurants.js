@@ -27,13 +27,24 @@ router.post('/', (req, res) => {
         .catch(error => console.log(error))
 })
 
-// 設定detail頁面路由:應用 params 打造動態路由
+// 設定detail頁面路由:應用 params 打造動態路由 無編輯功能
 router.get('/:restaurant_id', (req, res) => {
     const userId = req.user._id
     const _id = req.params.restaurant_id
-    return Restaurant.findOne({_id, userId})
+    return Restaurant.findOne({_id})
         .lean()
         .then(restaurant => res.render('detail', { restaurant }))
+        .catch(error => console.log(error))
+})
+
+// 設定detail頁面路由:應用 params 打造動態路由 具編輯功能
+router.get('/own/:restaurant_id', (req, res) => {
+    const userId = req.user._id
+    const _id = req.params.restaurant_id
+    const can_edit = true
+    return Restaurant.findOne({_id, userId})
+        .lean()
+        .then(restaurant => res.render('detail', { restaurant, can_edit }))
         .catch(error => console.log(error))
 })
 
