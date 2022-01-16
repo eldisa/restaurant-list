@@ -7,10 +7,11 @@ const Restaurant = require('../../models/restaurant')
 router.get('/', (req, res) => {
     const search_action = "/search"
     const range ="全部餐廳"
+    const can_edit = false
     Restaurant.find()
         .lean()
         .sort({_id: 'asc'})
-        .then(restaurants => res.render('index', {restaurants, search_action, range}))
+        .then(restaurants => res.render('index', {restaurants, search_action, range, can_edit}))
         .catch(error => console.log(error))
 })
 //user 的餐廳
@@ -18,10 +19,11 @@ router.get('/own', (req, res) => {
     const search_action = "/own/search"
     const range ="我的餐廳"
     const userId = req.user._id
+    const can_edit = true
     Restaurant.find({userId})
         .lean()
         .sort({_id: 'asc'})
-        .then(restaurants => res.render('index', {restaurants, search_action, range}))
+        .then(restaurants => res.render('index', {restaurants, search_action, range, can_edit}))
         .catch(error => console.log(error))
 })
 
@@ -29,6 +31,7 @@ router.get('/own', (req, res) => {
 router.get('/search', (req, res) => {
     const search_action = "/search"
     const range ="全部餐廳"
+    const can_edit = false
     const keyword = req.query.keyword.toLowerCase().trim()
     Restaurant.find()
         .lean()
@@ -36,7 +39,7 @@ router.get('/search', (req, res) => {
             restaurants = restaurants.filter(restaurant => {
                 return restaurant.name.toLowerCase().includes(keyword) || restaurant.name_en.toLowerCase().includes(keyword) || restaurant.category.toLowerCase().includes(keyword)
             })
-            res.render('index', {restaurants, keyword, search_action, range})
+            res.render('index', {restaurants, keyword, search_action, range, can_edit})
         })
         .catch(error => console.log(error))
 })
@@ -45,6 +48,7 @@ router.get('/search', (req, res) => {
 router.get('/own/search', (req, res) => {
     const search_action = "/own/search"
     const range ="我的餐廳"
+    const can_edit = true
     const keyword = req.query.keyword.toLowerCase().trim()
     const userId = req.user._id // 定義userId
     Restaurant.find({userId}) // 找userId相符的所有餐廳
@@ -53,7 +57,7 @@ router.get('/own/search', (req, res) => {
             restaurants = restaurants.filter(restaurant => {
                 return restaurant.name.toLowerCase().includes(keyword) || restaurant.name_en.toLowerCase().includes(keyword) || restaurant.category.toLowerCase().includes(keyword)
             })
-            res.render('index', {restaurants, keyword, search_action, range})
+            res.render('index', {restaurants, keyword, search_action, range, can_edit})
         })
         .catch(error => console.log(error))
 })

@@ -17,10 +17,10 @@
                         <a href="./restaurants/new"><button type="button" class="btn btn-success btn-lg">新增餐廳</button></a>
                     </div>
                     <div class="col m-auto">
-                        <a href="./"><button type="button" class="btn btn-primary btn-lg">所有餐廳</button></a>
+                        <a href="/"><button type="button" class="btn btn-primary btn-lg">所有餐廳</button></a>
                     </div>
                     <div class="col m-auto">
-                        <a href="./own"><button type="button" class="btn btn-info btn-lg">我的餐廳</button></a>
+                        <a href="/own"><button type="button" class="btn btn-info btn-lg">我的餐廳</button></a>
                     </div>
                 </div>
             </form>
@@ -47,21 +47,23 @@
                                     </span>
                                 </div>
 
-                                <a href="/restaurants/{{ this._id }}">
-                                    <span class="badge badge-pill badge-info font-weight-normal">
-                                        detail
-                                    </span>
-                                </a>
+                                {{#if ../can_edit}}
+                                    <a href="/restaurants/{{ this._id }}">
+                                        <span class="badge badge-pill badge-info font-weight-normal">
+                                            detail
+                                        </span>
+                                    </a>
 
-                                <a href="/restaurants/{{ this._id }}/edit">
-                                    <span class="badge badge-pill badge-warning font-weight-normal">
-                                        edit
-                                    </span>
-                                </a>
+                                    <a href="/restaurants/{{ this._id }}/edit">
+                                        <span class="badge badge-pill badge-warning font-weight-normal">
+                                            edit
+                                        </span>
+                                    </a>
 
-                                <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
-                                    <button type="submit" class="badge badge-pill badge-danger font-weight-normal">X</button>
-                                </form>
+                                    <form action="/restaurants/{{ this._id }}?_method=DELETE" method="POST" style="display: inline;">
+                                        <button type="submit" class="badge badge-pill badge-danger font-weight-normal">X</button>
+                                    </form>
+                                {{/if}}
                             </div>
                         </div>
                     </a>
