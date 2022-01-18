@@ -8,18 +8,28 @@
 ### 餐廳資訊管理及搜尋系統(需登入)
 #### 管理
 * 新增一家餐廳
+![](https://i.imgur.com/qJrehdT.jpg)
 
 * 修改一家餐廳
+![](https://i.imgur.com/6MlZuWB.jpg)
+
+
 * 刪除一家餐廳
 
 #### 瀏覽
-* 指定一家餐廳的詳細資訊
+
 * 全部的餐廳
+![](https://i.imgur.com/n7zdBwm.jpg)
+
+* 觀看一家餐廳的詳細資訊
+![](https://i.imgur.com/MoRyfnB.jpg)
 * 自己擁有的餐廳
+![](https://i.imgur.com/TQNRcfQ.jpg)
 * 根據關鍵字進行搜尋
+![](https://i.imgur.com/q6h6CzF.jpg)
 
 ### 使用者註冊以及認證系統
-
+![](https://i.imgur.com/4p5wV1z.jpg)
 * 一般帳號密碼
 * 使用 Facebook 帳號
 
@@ -33,7 +43,6 @@
 
 ```
 git clone https://github.com/eldisa/restaurant-list.git
-
 ```
 
 2. 進入專案的目錄
